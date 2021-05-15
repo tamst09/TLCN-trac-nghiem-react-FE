@@ -147,6 +147,7 @@ export const SignUpPage = () => {
                 label="BirthDay"
                 type="date"
                 id="birthday" 
+                defaultValue="2021-05-24"
               />
             </Grid>
             <Grid>
