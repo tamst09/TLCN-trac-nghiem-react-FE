@@ -18,7 +18,7 @@ const Home = () => {
                     <div className="collapse navbar-collapse" id="navbarResponsive">
                         <ul className="navbar-nav ml-auto">
                             <li className="nav-item">
-                                <Link to='' className="nav-link" >Sign Up</Link>
+                                <Link to='/signup' className="nav-link" >Sign Up</Link>
                             </li>
                             <li className="nav-item">
                                 <Link to='/login' className="nav-link" >Log In</Link>
