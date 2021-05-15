@@ -1,83 +1,142 @@
-import {
-    Link
-} from "react-router-dom";
+import React from 'react';
+import Avatar from '@material-ui/core/Avatar';
+import Button from '@material-ui/core/Button';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import TextField from '@material-ui/core/TextField';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Checkbox from '@material-ui/core/Checkbox';
+import Link from '@material-ui/core/Link';
+import Paper from '@material-ui/core/Paper';
+import Box from '@material-ui/core/Box';
+import Grid from '@material-ui/core/Grid';
+import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
+import Typography from '@material-ui/core/Typography';
+import { makeStyles } from '@material-ui/core/styles';
+import { GoogleLogin } from 'react-google-login';
+import FacebookLogin from 'react-facebook-login';
+import { FaFacebookSquare } from 'react-icons/fa'
+import { Label } from '@material-ui/icons';
+import './fb-gg-scrips'
+const useStyles = makeStyles((theme) => ({
+  root: {
+    height: '100vh',
+  },
+  image: {
+    backgroundImage: 'url(https://www.englishcollege.com/sites/default/files/field/image/best_english_courses_0.jpg)',
+    backgroundRepeat: 'no-repeat',
+    backgroundColor:
+      theme.palette.type === 'light' ? theme.palette.grey[50] : theme.palette.grey[900],
+    backgroundSize: '100%',
+    backgroundPosition: 'center',
+  },
+  paper: {
+    margin: theme.spacing(8, 4),
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+  },
+  avatar: {
+    margin: theme.spacing(1),
+    backgroundColor: theme.palette.secondary.main,
+  },
+  form: {
+    width: '100%', // Fix IE 11 issue.
+    marginTop: theme.spacing(1),
+  },
+  submit: {
+    margin: theme.spacing(1, 0, 2),
+  },
+}));
 
-// import assets
-import 'jquery';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import 'bootstrap/dist/js/bootstrap.bundle.min';
-import '../../../assets/authenticate/vendor/fontawesome-free/css/all.min.css';
-import '../../../assets/authenticate/css/fontgoogleapis.css';
+const responseGoogle = (response) => {
+  console.log(response);
+}
+
+const responseFacebook = (response) => {
+  console.log(response);
+}
 
 export const LoginPage = () => {
-    return (
-        <div className="bg-gradient-primary">
-            <div className="container">
+  const classes = useStyles();
+  return (
 
-                <div className="row justify-content-center">
-
-                    <div className="col-xl-10 col-lg-12 col-md-9">
-
-                        <div className="card o-hidden border-0 shadow-lg my-5">
-                            <div className="card-body p-0">
-
-                                <div className="row">
-                                    <div className="col-lg-6">
-                                        <img style={{ maxWidth: '100%', maxHeight: '100%', backgroundSize: 'cover' }} src={process.env.PUBLIC_URL + '/images/common/loginbg.jpg'} alt="Login background" />
-                                    </div>
-                                    <div className="col-lg-6">
-                                        <div className="p-5">
-                                            <div className="text-center">
-                                                <h1 claclassNamess="h4 text-gray-900 mb-4">Welcome Back!</h1>
-                                            </div>
-                                            <form className="user">
-                                                <div className="form-group">
-                                                    <input type="text" className="form-control form-control-user" placeholder="Enter your username..." />
-                                                    <span className="text-danger"></span>
-                                                </div>
-                                                <div class="form-group">
-                                                    <input type="password" className="form-control form-control-user" placeholder="Password" />
-                                                    <span className="text-danger"></span>
-                                                    <span id="msg" className="text-danger">Message</span>
-                                                </div>
-                                                <div className="form-group">
-                                                    <div className="custom-control custom-checkbox small">
-                                                        <input type="checkbox" className="custom-control-input" id="customCheck" />
-                                                        <label className="custom-control-label" for="customCheck">Remember Me</label>
-                                                    </div>
-                                                </div>
-                                                <input type="submit" className="btn btn-primary btn-user btn-block" value="Login" />
-                                            </form>
-                                            <hr />
-
-                                            <form id="external-account" className="user">
-                                                <div>
-                                                    <input type="hidden" name="token" id="TokenValue" />
-                                                    <input type="hidden" name="provider" id="ProviderValue" />
-                                                    <button type="button" className="btn btn-facebook btn-user btn-block">
-                                                        <i class="fab fa-facebook-f fa-fw"></i> Login with Facebook
-                                                    </button>
-                                                    <button id="googleSignIn" type="button" className="btn btn-google btn-user btn-block">
-                                                        <i class="fab fa-google fa-fw"></i> Login with Google
-                                                    </button>
-                                                </div>
-                                            </form>
-                                            <hr />
-
-                                            <div className="text-center">
-                                                <Link to='/account/forgot' className="small">Forgot Password?</Link>
-                                            </div>
-                                            <div className="text-center">
-                                                <Link to='/register' className="small">Create an Account!</Link>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <Grid container component="main" className={classes.root}>
+      <CssBaseline />
+      <Grid item xs={false} sm={4} md={7} className={classes.image} />
+      <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
+        <div className={classes.paper}>
+          <Avatar className={classes.avatar}>
+            <LockOutlinedIcon />
+          </Avatar>
+          <Typography component="h1" variant="h4">
+            Sign in
+          </Typography>
+          <form className={classes.form} noValidate>
+            <TextField
+              variant="outlined"
+              margin="normal"
+              required
+              fullWidth
+              id="username"
+              label="Username"
+              name="username"
+              autoComplete="username"
+              autoFocus
+            />
+            <TextField
+              variant="outlined"
+              margin="normal"
+              required
+              fullWidth
+              name="password"
+              label="Password"
+              type="password"
+              id="password"
+              autoComplete="current-password"
+            />
+            <FormControlLabel
+              control={<Checkbox value="remember" color="primary" />}
+              label="Remember me"
+            />
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              color="primary"
+              className={classes.submit}
+            >
+              Sign In
+            </Button>
+            <Grid container
+              direction="row"
+              justify="center"
+              alignItems="center">
+              <GoogleLogin
+                fullWidth
+                clientId="904853177564-2ei4e51n22bok5a70o8eorovcuvgdnqs.apps.googleusercontent.com"
+                buttonText="Login with Google"
+                onSuccess={responseGoogle}
+                onFailure={responseGoogle}
+                cookiePolicy={'single_host_origin'}
+                variant="contained"
+                className={classes.submit}
+              />
+            </Grid>
+            <Grid container>
+              <Grid item xs>
+                <Link href="/notfound" variant="body2">
+                  Forgot password?
+                </Link>
+              </Grid>
+              <Grid item>
+                <Link href="/signup" variant="body2">
+                  Don't have an account? Sign Up now!"
+                </Link>
+              </Grid>
+            </Grid>
+          </form>
         </div>
-    )
+      </Grid>
+    </Grid>
+  );
 }
