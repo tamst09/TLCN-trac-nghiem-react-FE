@@ -12,6 +12,7 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import {Input} from '@material-ui/core';
+import { useForm } from "react-hook-form";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -45,7 +46,8 @@ const useStyles = makeStyles((theme) => ({
 export const SignUpPage = () => {
   const classes = useStyles();
 
-
+  const { register, handleSubmit, errors } = useForm();
+  const onSubmit = data => console.log(data);
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
@@ -61,16 +63,16 @@ export const SignUpPage = () => {
           <Grid container spacing={1}>
             <Grid item xs={12} sm={6}>
             <TextField
-                render={({ field }) => <Input {...field} />}
-                autoComplete="fname"
-                name="firstName"
-                variant="outlined"
-                required
-                fullWidth
-                id="firstName"
-                label="First Name"
-                autoFocus
+              autoComplete="fname"
+              name="firstName"
+              variant="outlined"
+              required
+              fullWidth
+              id="firstName"
+              label="First Name"
+              autoFocus
               />
+              
             </Grid>
             <Grid item xs={12} sm={6}>
               <TextField
@@ -80,7 +82,6 @@ export const SignUpPage = () => {
                 id="lastName"
                 label="Last Name"
                 name="lastName"
-                
                 autoComplete="lname"
               />
             </Grid>
@@ -91,8 +92,7 @@ export const SignUpPage = () => {
                 fullWidth
                 id="username"
                 label="Username"
-                name="username"
-                
+                name="username"                
                 autoComplete="username"
               />
             </Grid>
@@ -102,8 +102,7 @@ export const SignUpPage = () => {
                 required
                 fullWidth
                 name="password"
-                label="Password"
-                
+                label="Password"                
                 type="password"
                 id="password"
                 autoComplete="current-password"
@@ -117,8 +116,7 @@ export const SignUpPage = () => {
                 name="confirmpassword"
                 label="Confirm Password"
                 type="password"
-                id="confirmpassword"
-                
+                id="confirmpassword"                
                 autoComplete="current-password"
               />
             </Grid>
@@ -142,8 +140,7 @@ export const SignUpPage = () => {
                 name="phone"
                 label="Phone Number"
                 id="phone"
-                autoComplete="phone number"
-                
+                autoComplete="phone number"                
               />
             </Grid>
             <Grid item xs={12}>

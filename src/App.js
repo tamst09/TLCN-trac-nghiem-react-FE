@@ -12,6 +12,7 @@ import Home from './components/Home';
 import { LoginPage } from './features/Authenticate/pages/LoginPage';
 import { SignUpPage } from './features/Authenticate/pages/SignUpPage';
 import { ForgotPasswordPage } from './features/Authenticate/pages/ForgotPasswordPage';
+import { ResetPasswordPage } from './features/Authenticate/pages/ResetPasswordPage';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Route path='/login' component={LoginPage} />
         <Route path = '/signup' component={SignUpPage}/>
         <Route path = '/forgotpassword' component={ForgotPasswordPage}/>
+        <Route path = '/resetpassword' component={ResetPasswordPage}/>
         <Route path='/notfound' component={NotFound} />
         <Redirect to='/notfound' />
       </Switch>

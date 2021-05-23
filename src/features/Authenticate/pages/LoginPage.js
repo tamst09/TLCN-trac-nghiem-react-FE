@@ -12,6 +12,7 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import { GoogleLogin } from 'react-google-login';
+import { useForm } from "react-hook-form";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -48,8 +49,13 @@ const responseGoogle = (response) => {
   console.log(response);
 }
 export const LoginPage = () => {
-  
+
+  const { register, handleSubmit,
+    formState: { errors }} = useForm();
+  const onSubmit = data => console.log(data);
   const classes = useStyles();
+
+
   return (
     <Grid container component="main" className={classes.root}>
       <CssBaseline />
@@ -62,18 +68,23 @@ export const LoginPage = () => {
           <Typography component="h1" variant="h4">
             Sign in
           </Typography>
-          <form className={classes.form}>
+          <form className={classes.form} onSubmit={handleSubmit(onSubmit)}>
             <TextField
               variant="outlined"
               margin="normal"
-              required
               fullWidth
               id="username"
               label="Username"
+              required
               name="username"
               autoComplete="username"
               autoFocus
-            />
+            >
+              <input {...register("username", {
+                required: true,
+              })}/>
+              {errors?.username?.type === "required" && <p>This field is required</p>}
+            </TextField>
             <TextField
               variant="outlined"
               margin="normal"
