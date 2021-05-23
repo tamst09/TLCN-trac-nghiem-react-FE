@@ -22,7 +22,7 @@ function App() {
         <Route path='/login' component={LoginPage} />
         <Route path = '/signup' component={SignUpPage}/>
         <Route path = '/forgotpassword' component={ForgotPasswordPage}/>
-        <Route path = '/resetpassword' component={ResetPasswordPage}/>
+        <Route path = '/resetpassword/:id' component={ResetPasswordPage}/>
         <Route path='/notfound' component={NotFound} />
         <Redirect to='/notfound' />
       </Switch>

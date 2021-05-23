@@ -8,12 +8,14 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 
+import axios from 'axios';
+
 const useStyles = makeStyles((theme) => ({
   root: {
     height: '100vh',
   },
   image: {
-    backgroundImage: 'url(/images/homepage/impro.jpg)',
+    backgroundImage: 'url(/images/homepage/forgotpass.jpg)',
     backgroundRepeat: 'no-repeat',
     backgroundColor:
       theme.palette.type === 'light' ? theme.palette.grey[50] : theme.palette.grey[900],
@@ -26,10 +28,6 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'column',
     alignItems: 'center',
   },
-  avatar: {
-    margin: theme.spacing(1),
-    backgroundColor: theme.palette.secondary.main,
-  },
   form: {
     width: '100%', // Fix IE 11 issue.
     marginTop: theme.spacing(1),
@@ -40,7 +38,22 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export const ForgotPasswordPage = () => {
-  const classes = useStyles();
+  const classes = useStyles()
+  const data = {
+    email: ""
+  }
+  const handleSubmit = e => {
+    e.preventDefault();
+    axios.post('forgot', data).then(
+      res => {
+        console.log(res)
+      }
+    ).catch(
+      err => {
+        console.log(err);
+      }
+    )
+  }
   return (
     <Grid container component="main" className={classes.root}>
       <CssBaseline />
@@ -50,8 +63,9 @@ export const ForgotPasswordPage = () => {
           <Typography component="h1" variant="h4" >
             Enter your email to get password!
           </Typography>
-          <form className={classes.form} >
+          <form className={classes.form} onSubmit={handleSubmit}>
             <TextField
+              onChange={e => data.email = e.target.value}
               variant="outlined"
               margin="normal"
               required
@@ -59,16 +73,16 @@ export const ForgotPasswordPage = () => {
               id="email"
               label="Email"
               name="email"
-              autoComplete="email"
+              type='email'
               autoFocus
             />
             <Button
-            size="large"
-            type="submit"
-            variant="contained"
-            color="primary"
-            className={classes.submit}
-            style = {{textAlign:'center'}}
+              size="large"
+              type="submit"
+              variant="contained"
+              color="primary"
+              className={classes.submit}
+              style={{ textAlign: 'center' }}
             >
               Send
             </Button>
