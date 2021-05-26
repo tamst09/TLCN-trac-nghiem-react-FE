@@ -10,7 +10,7 @@ import { useState } from 'react'
 
 function ShowProfile(props) {
     let { path, url } = useRouteMatch();
-    const [activeTab, setactiveTab] = useState(1);
+    const [activeTab, setActiveTab] = useState(1);
 
     return (
         <div className="container">
@@ -26,23 +26,23 @@ function ShowProfile(props) {
                         </div>
                         <div className="profile-usermenu">
                             <ul className="nav">
-                                <li className={"tab " + (activeTab === 1) ? "active" : ""}>
+                                <li onClick={() => { setActiveTab(1) }} className={"tab " + ((activeTab === 1) ? "active" : "")}>
                                     <Link to={`${url}`} asp-controller="Account" asp-action="ShowProfile">
                                         <i className="glyphicon glyphicon-user" />
                                                 Infomation
-                                        </Link>
+                                    </Link>
                                 </li>
-                                <li className={"tab " + (activeTab === 2) ? "active" : ""}>
+                                <li onClick={() => { setActiveTab(2) }} className={"tab " + ((activeTab === 2) ? "active" : "")}>
                                     <Link to={`${url}/update-information`} asp-controller="Account" asp-action="UpdateProfile">
                                         <i className="glyphicon glyphicon-pencil" />
                                                 Update infomation
-                                        </Link>
+                                    </Link>
                                 </li>
-                                <li className={"tab " + (activeTab === 3) ? "active" : ""}>
+                                <li onClick={() => setActiveTab(3)} className={"tab " + ((activeTab === 3) ? "active" : "")}>
                                     <Link to={`${url}/change-password`} asp-controller="Account" asp-action="ChangePassword">
                                         <i className="glyphicon glyphicon-lock"></i>
                                                 Change password
-                                            </Link>
+                                    </Link>
                                 </li>
                             </ul>
                         </div>
