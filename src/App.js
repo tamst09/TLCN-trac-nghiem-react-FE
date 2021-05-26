@@ -11,6 +11,7 @@ import NotFound from './components/NotFound';
 import Home from './components/Home';
 import { LoginPage } from './features/Authenticate/pages/LoginPage';
 import { SignUpPage } from './features/Authenticate/pages/SignUpPage';
+import ShowProfile from './features/Profile/pages/ShowProfile';
 
 function App() {
   return (
@@ -18,7 +19,8 @@ function App() {
       <Switch>
         <Route exact path='/' component={Home} />
         <Route path='/login' component={LoginPage} />
-        <Route path = '/signup' component={SignUpPage}/>
+        <Route path='/signup' component={SignUpPage} />
+        <Route path='/profile' component={ShowProfile} />
         <Route path='/notfound' component={NotFound} />
         <Redirect to='/notfound' />
       </Switch>
