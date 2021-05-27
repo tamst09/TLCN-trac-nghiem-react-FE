@@ -11,7 +11,6 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-import PasswordField from 'material-ui-password-field'
 
 
 const useStyles = makeStyles((theme) => ({
@@ -59,17 +58,17 @@ export const SignUpPage = () => {
         <form className={classes.form}>
           <Grid container spacing={1}>
             <Grid item xs={12} sm={6}>
-            <TextField
-              autoComplete="fname"
-              name="firstName"
-              variant="outlined"
-              required
-              fullWidth
-              id="firstName"
-              label="First Name"
-              autoFocus
+              <TextField
+                autoComplete="fname"
+                name="firstName"
+                variant="outlined"
+                required
+                fullWidth
+                id="firstName"
+                label="First Name"
+                autoFocus
               />
-              
+
             </Grid>
             <Grid item xs={12} sm={6}>
               <TextField
@@ -89,7 +88,7 @@ export const SignUpPage = () => {
                 fullWidth
                 id="username"
                 label="Username"
-                name="username"                
+                name="username"
                 autoComplete="username"
               />
             </Grid>
@@ -99,7 +98,7 @@ export const SignUpPage = () => {
                 required
                 fullWidth
                 name="password"
-                label="Password"                
+                label="Password"
                 type="password"
                 id="password"
                 autoComplete="current-password"
@@ -113,7 +112,7 @@ export const SignUpPage = () => {
                 name="confirmpassword"
                 label="Confirm Password"
                 type="password"
-                id="confirmpassword"                
+                id="confirmpassword"
                 autoComplete="current-password"
               />
             </Grid>
@@ -137,7 +136,7 @@ export const SignUpPage = () => {
                 name="phone"
                 label="Phone Number"
                 id="phone"
-                autoComplete="phone number"                
+                autoComplete="phone number"
               />
             </Grid>
             <Grid item xs={12}>
@@ -148,7 +147,7 @@ export const SignUpPage = () => {
                 name="birthday"
                 label="BirthDay"
                 type="date"
-                id="birthday" 
+                id="birthday"
                 defaultValue="2021-05-24"
               />
             </Grid>
@@ -159,13 +158,13 @@ export const SignUpPage = () => {
               />
             </Grid>
             <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            color="primary"
-            className={classes.submit}
-          >
-            Sign Up
+              type="submit"
+              fullWidth
+              variant="contained"
+              color="primary"
+              className={classes.submit}
+            >
+              Sign Up
           </Button>
           </Grid>
           <Grid container justify="center" spacing={5}>
